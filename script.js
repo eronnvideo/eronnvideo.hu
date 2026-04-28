@@ -1,156 +1,149 @@
 /* =========================================================
-   ERONN VIDEO — interactions
+   ERONNVIDEO.HU — script.js
+   Cookie consent + Facebook iframe reveal + Formspree submit
    ========================================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+(function () {
+  'use strict';
 
-  /* ========== Mobile menu ========== */
-  const navToggle = document.querySelector('.nav-toggle');
-  const mainNav = document.querySelector('.main-nav');
-
-  if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Close menu when a link is clicked
-    mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  /* ========== Header shadow on scroll ========== */
-  const header = document.querySelector('.site-header');
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
-  /* ========== Scroll reveal ========== */
-  const revealEls = document.querySelectorAll('.about, .portfolio, .packages, .contact, .testimonials');
-  revealEls.forEach(el => el.classList.add('reveal'));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+  /* ---------- SMOOTH SCROLL on nav ---------- */
+  document.querySelectorAll('.nav-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          var navOffset = 70;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
         }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      }
+    });
+  });
 
-    revealEls.forEach(el => observer.observe(el));
+  /* ---------- COOKIE CONSENT ---------- */
+  var COOKIE_KEY = 'eronnvideo_fb_consent';
+  var banner = document.getElementById('cookieBanner');
+
+  function getConsent() {
+    try {
+      return localStorage.getItem(COOKIE_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function setConsent(value) {
+    try {
+      localStorage.setItem(COOKIE_KEY, value);
+    } catch (e) {
+      /* ignore */
+    }
+  }
+
+  function loadFacebookIframes() {
+    document.querySelectorAll('.review-card').forEach(function (card) {
+      var src = card.getAttribute('data-fb-src');
+      if (!src) return;
+      var placeholder = card.querySelector('.review-placeholder');
+      if (placeholder) placeholder.remove();
+      if (card.querySelector('iframe')) return;
+
+      var iframe = document.createElement('iframe');
+      iframe.className = 'review-frame';
+      iframe.setAttribute('src', src);
+      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute(
+        'allow',
+        'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share'
+      );
+      card.appendChild(iframe);
+    });
+  }
+
+  function showBanner() {
+    if (banner) banner.classList.add('show');
+  }
+
+  function hideBanner() {
+    if (banner) banner.classList.remove('show');
+  }
+
+  if (getConsent() === 'accepted') {
+    loadFacebookIframes();
   } else {
-    // Fallback for old browsers
-    revealEls.forEach(el => el.classList.add('visible'));
+    showBanner();
   }
 
-  /* ========== YouTube facade pattern ==========
-     Film cards are <a> tags pointing to YouTube — works without JS.
-     With JS: intercept click and play inline.
-     ============================================ */
-  const filmCards = document.querySelectorAll('.film-embed');
-  filmCards.forEach(embed => {
-    embed.addEventListener('click', (e) => {
-      const videoId = embed.dataset.videoId;
-      if (!videoId) return;
+  var acceptBtn = document.getElementById('cookieAccept');
+  var declineBtn = document.getElementById('cookieDecline');
 
-      // Intercept the link click - play inline instead
-      e.preventDefault();
-
-      const iframe = document.createElement('iframe');
-      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      iframe.title = 'Esküvői film';
-      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'lazy';
-
-      embed.innerHTML = '';
-      embed.appendChild(iframe);
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function () {
+      setConsent('accepted');
+      hideBanner();
+      loadFacebookIframes();
     });
-  });
+  }
 
-  /* ========== Testimonial expand/collapse ========== */
-  const testimonialToggles = document.querySelectorAll('.testimonial-toggle');
-  testimonialToggles.forEach(btn => {
-    const text = btn.previousElementSibling;
-    if (!text) return;
-
-    // Hide toggle if text isn't actually clamped (short text)
-    requestAnimationFrame(() => {
-      if (text.scrollHeight <= text.clientHeight + 2) {
-        btn.style.display = 'none';
-      }
+  if (declineBtn) {
+    declineBtn.addEventListener('click', function () {
+      setConsent('declined');
+      hideBanner();
     });
+  }
 
-    btn.addEventListener('click', () => {
-      const isClamped = text.dataset.clamped === 'true';
-      text.dataset.clamped = isClamped ? 'false' : 'true';
-      btn.textContent = isClamped ? 'Mutass kevesebbet' : 'Olvass tovább';
-      btn.setAttribute('aria-expanded', String(isClamped));
-    });
-  });
-
-  /* ========== Smooth scroll offset for fixed header ========== */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || targetId === '#top') return;
-
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        const headerHeight = header ? header.offsetHeight : 0;
-        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
-        window.scrollTo({ top, behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* ========== Contact form (Formspree) ========== */
-  const form = document.getElementById('contactForm');
+  /* ---------- FORMSPREE SUBMIT ---------- */
+  var form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Küldés folyamatban…';
+      var status = document.getElementById('formStatus');
+      var submitBtn = form.querySelector('.form-submit');
+      var data = new FormData(form);
 
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' }
-        });
-
-        if (response.ok) {
-          form.innerHTML = `
-            <div style="text-align: center; padding: 2rem 0;">
-              <h3 style="font-family: var(--font-display); font-size: 1.75rem; margin: 0 0 1rem;">Köszönöm! ✓</h3>
-              <p style="color: var(--muted); margin: 0;">Megkaptam az üzeneted, 48 órán belül válaszolok.</p>
-            </div>
-          `;
-        } else {
-          throw new Error('Hiba történt');
-        }
-      } catch (err) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        alert('Sajnos hiba történt. Kérlek próbáld újra, vagy írj direktben emailben: eronnvideo@gmail.com');
+      if (status) {
+        status.textContent = 'Küldés folyamatban…';
+        status.className = 'form-status';
       }
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            if (status) {
+              status.textContent =
+                'Köszönöm az üzenetet! Hamarosan jelentkezem.';
+              status.className = 'form-status success';
+            }
+          } else {
+            return response.json().then(function (data) {
+              throw new Error(
+                (data && data.errors && data.errors[0] && data.errors[0].message) ||
+                  'Hiba történt a küldés során.'
+              );
+            });
+          }
+        })
+        .catch(function (err) {
+          if (status) {
+            status.textContent =
+              'Hiba: ' + (err.message || 'A küldés sikertelen volt.') +
+              ' Próbáld meg e-mailen: eronnvideo@gmail.com';
+            status.className = 'form-status error';
+          }
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
-
-  /* ========== Footer year ========== */
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-});
+})();
