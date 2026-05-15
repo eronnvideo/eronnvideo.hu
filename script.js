@@ -14,7 +14,8 @@
         var target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          var navOffset = 70;
+          var nav = document.querySelector('.topnav');
+          var navOffset = (nav ? nav.offsetHeight : 70) + 18;
           var top = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
           window.scrollTo({ top: top, behavior: 'smooth' });
         }
@@ -173,4 +174,33 @@
       if (item) item.classList.toggle('is-open', !isOpen);
     });
   });
+
+  /* ---------- MOBILE NAV STICKY LOCK ---------- */
+  var topnav = document.querySelector('.topnav');
+  var mobileNavStart = 0;
+
+  function updateMobileNavMetrics() {
+    if (!topnav) return;
+    document.documentElement.style.setProperty(
+      '--mobile-nav-height',
+      topnav.offsetHeight + 'px'
+    );
+    document.body.classList.remove('nav-is-stuck');
+    mobileNavStart = topnav.getBoundingClientRect().top + window.pageYOffset;
+    updateMobileNavState();
+  }
+
+  function updateMobileNavState() {
+    if (!topnav) return;
+    var shouldStick = window.matchMedia('(max-width: 760px)').matches &&
+      window.pageYOffset >= mobileNavStart;
+    document.body.classList.toggle('nav-is-stuck', shouldStick);
+  }
+
+  if (topnav) {
+    updateMobileNavMetrics();
+    window.addEventListener('resize', updateMobileNavMetrics);
+    window.addEventListener('orientationchange', updateMobileNavMetrics);
+    window.addEventListener('scroll', updateMobileNavState, { passive: true });
+  }
 })();
