@@ -2329,7 +2329,24 @@ body {
   }
 
   .hero {
-    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 22px;
+  }
+
+  .lang-switch {
+    position: static;
+    align-self: flex-end;
+    margin: 0 2px 22px 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(197, 207, 219, 0.54);
+    box-shadow: 0 12px 30px rgba(21, 27, 34, 0.075);
+  }
+
+  .hero-inner {
+    width: 100%;
   }
 
   .section-title-wrap {
