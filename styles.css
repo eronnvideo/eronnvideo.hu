@@ -94,9 +94,55 @@ a {
 
 /* ===== HERO ===== */
 .hero {
+  position: relative;
   padding: clamp(40px, 6vw, 80px) 16px clamp(30px, 4vw, 50px);
   text-align: center;
   background: #ffffff;
+}
+
+.lang-switch {
+  position: absolute;
+  top: 18px;
+  right: clamp(16px, 4vw, 42px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+  padding: 3px;
+  border: 1px solid rgba(197, 207, 219, 0.46);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 26px rgba(21, 27, 34, 0.055);
+}
+
+.lang-switch a,
+.lang-switch span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 28px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.lang-switch a {
+  color: #6f7480;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.lang-switch a:hover {
+  color: #20242b;
+  background: rgba(247, 250, 253, 0.94);
+}
+
+.lang-current {
+  color: #ffffff;
+  background: #15171c;
 }
 
 .hero-inner {
@@ -138,6 +184,17 @@ a {
 @media (max-width: 600px) {
   .hero {
     padding: 30px 16px 20px;
+  }
+  .lang-switch {
+    top: 10px;
+    right: 10px;
+    min-height: 32px;
+  }
+  .lang-switch a,
+  .lang-switch span {
+    min-width: 32px;
+    min-height: 26px;
+    font-size: 10px;
   }
   .hero-title {
     letter-spacing: 5px;
