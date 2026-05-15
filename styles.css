@@ -1998,3 +1998,153 @@ a {
     transition: none;
   }
 }
+
+/* ===== CLEAN WHITE SAFE OVERRIDES ===== */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overscroll-behavior-x: none;
+}
+
+.topnav {
+  overflow-x: hidden;
+}
+
+.contact-section,
+.faq-section {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(226, 235, 246, 0.30), transparent 38%),
+    linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+}
+
+.contact-section::before,
+.faq-section::before {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(244, 242, 205, 0.10), transparent 38%),
+    linear-gradient(rgba(17, 18, 22, 0.012) 1px, transparent 1px);
+  opacity: 0.42;
+}
+
+.contact-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(252, 253, 254, 0.88));
+  border-color: rgba(190, 203, 218, 0.34);
+}
+
+.form-field input,
+.form-field textarea {
+  border-color: rgba(194, 204, 216, 0.58);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.form-field input[type="date"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-align-last: center;
+  color: #141519;
+}
+
+.form-field input[type="date"]::-webkit-date-and-time-value {
+  min-height: 1.35em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-field input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 18px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: rgba(135, 158, 188, 0.72);
+  box-shadow:
+    0 0 0 4px rgba(172, 198, 228, 0.14),
+    0 18px 34px rgba(18, 19, 22, 0.055);
+}
+
+.form-submit {
+  box-shadow:
+    0 18px 42px rgba(18, 19, 22, 0.22),
+    0 0 0 1px rgba(205, 214, 224, 0.24) inset;
+}
+
+.form-submit:hover {
+  background:
+    linear-gradient(135deg, #17181c 0%, #26303b 100%);
+  box-shadow:
+    0 24px 52px rgba(18, 19, 22, 0.24),
+    0 0 0 1px rgba(202, 213, 226, 0.34) inset;
+}
+
+.faq-inner {
+  border-color: rgba(188, 201, 218, 0.34);
+}
+
+.faq-item {
+  border-color: rgba(188, 201, 218, 0.24);
+}
+
+.faq-question:hover,
+.faq-question:focus-visible {
+  color: #314052;
+}
+
+.faq-question:focus-visible {
+  outline-color: rgba(135, 158, 188, 0.55);
+}
+
+.faq-question[aria-expanded="true"]::after {
+  border-color: rgba(83, 107, 136, 0.88);
+}
+
+.nav-link-cta {
+  border-color: rgba(190, 203, 218, 0.48);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(247, 250, 253, 0.94));
+  box-shadow: 0 10px 24px rgba(60, 76, 96, 0.08);
+}
+
+.nav-link-cta:hover {
+  color: #314052;
+  border-color: rgba(135, 158, 188, 0.58);
+  box-shadow: 0 12px 30px rgba(60, 76, 96, 0.12);
+}
+
+@media (max-width: 760px) {
+  .nav-inner {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .nav-link {
+    max-width: 100%;
+    border-color: rgba(190, 203, 218, 0.42);
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .nav-link-cta {
+    border-color: rgba(190, 203, 218, 0.56);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 253, 0.96));
+    box-shadow: 0 10px 22px rgba(60, 76, 96, 0.08);
+  }
+
+  .contact-section,
+  .faq-section {
+    background:
+      radial-gradient(circle at 50% 0%, rgba(226, 235, 246, 0.26), transparent 36%),
+      #ffffff;
+  }
+
+  .form-field input[type="date"]::-webkit-calendar-picker-indicator {
+    right: 15px;
+  }
+}
