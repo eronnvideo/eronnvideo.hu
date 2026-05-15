@@ -146,4 +146,31 @@
         });
     });
   }
+
+  /* ---------- FAQ ACCORDION ---------- */
+  document.querySelectorAll('.faq-question').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var answerId = button.getAttribute('aria-controls');
+      var answer = answerId ? document.getElementById(answerId) : null;
+      if (!answer) return;
+
+      var isOpen = button.getAttribute('aria-expanded') === 'true';
+      var item = button.closest('.faq-item');
+
+      if (!isOpen) {
+        document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(function (openButton) {
+          var openAnswerId = openButton.getAttribute('aria-controls');
+          var openAnswer = openAnswerId ? document.getElementById(openAnswerId) : null;
+          var openItem = openButton.closest('.faq-item');
+          openButton.setAttribute('aria-expanded', 'false');
+          if (openAnswer) openAnswer.setAttribute('aria-hidden', 'true');
+          if (openItem) openItem.classList.remove('is-open');
+        });
+      }
+
+      button.setAttribute('aria-expanded', String(!isOpen));
+      answer.setAttribute('aria-hidden', String(isOpen));
+      if (item) item.classList.toggle('is-open', !isOpen);
+    });
+  });
 })();

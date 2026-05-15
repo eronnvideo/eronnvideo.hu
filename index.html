@@ -315,7 +315,7 @@
 
   <!-- ===== KAPCSOLAT URLAP ===== -->
   <div class="section-title-wrap">
-    <h2 class="lux-title" id="ajanlatkeres">Kapcsolat</h2>
+    <h2 class="lux-title" id="ajanlatkeres">Ajánlatkérés</h2>
   </div>
 
   <section class="contact-section">
@@ -327,12 +327,12 @@
 
             <div class="form-field">
               <label for="contact-name">Név <span class="req">*</span></label>
-              <input type="text" id="contact-name" name="name" placeholder="Anna és Bence" required>
+              <input type="text" id="contact-name" name="name" placeholder="A nevetek" required>
             </div>
 
             <div class="form-field">
               <label for="contact-email">E-mail cím <span class="req">*</span></label>
-              <input type="email" id="contact-email" name="email" placeholder="ahova válaszolhatok" required>
+              <input type="email" id="contact-email" name="email" placeholder="Ahol elérlek titeket" required>
             </div>
 
             <div class="form-row form-row-double">
@@ -342,16 +342,16 @@
               </div>
               <div class="form-field">
                 <label for="contact-location">Esküvő helyszíne</label>
-                <input type="text" id="contact-location" name="wedding_location" placeholder="pl. Budapest, Normafa Rendezvényház">
+                <input type="text" id="contact-location" name="wedding_location" placeholder="Város, helyszín vagy környék">
               </div>
             </div>
 
             <div class="form-field">
               <label for="contact-message">Üzenet</label>
-              <textarea id="contact-message" name="message" placeholder="Pár szó az esküvőről, időpontokról, elképzelésekről…"></textarea>
+              <textarea id="contact-message" name="message" placeholder="Pár mondat a napotokról, a hangulatról és arról, mit szeretnétek megőrizni…"></textarea>
             </div>
 
-            <button type="submit" class="form-submit">Üzenet küldése</button>
+            <button type="submit" class="form-submit">Ajánlatot kérek</button>
 
             <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
           </form>
@@ -568,24 +568,24 @@
     </div>
 
     <div class="faq-inner">
-      <article class="faq-item">
-        <h3>Mikor érdemes foglalni?</h3>
-        <div class="faq-answer">
+      <article class="faq-item is-open">
+        <h3><button class="faq-question" type="button" id="faq-q-1" aria-expanded="true" aria-controls="faq-a-1">Mikor érdemes foglalni?</button></h3>
+        <div class="faq-answer" id="faq-a-1" role="region" aria-labelledby="faq-q-1" aria-hidden="false">
           <p>Amint megvan a dátum és a helyszín.</p>
           <p>Évente csak korlátozott számú esküvőt vállalok, ezért a kiemelt hétvégék gyorsan betelnek.</p>
         </div>
       </article>
 
       <article class="faq-item">
-        <h3>Hogyan történik a foglalás?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">Hogyan történik a foglalás?</button></h3>
+        <div class="faq-answer" id="faq-a-2" role="region" aria-labelledby="faq-q-2" aria-hidden="true">
           <p>A foglalás szerződéssel és előleggel válik véglegessé.</p>
         </div>
       </article>
 
       <article class="faq-item">
-        <h3>Több kamerával dolgozol?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">Több kamerával dolgozol?</button></h3>
+        <div class="faq-answer" id="faq-a-3" role="region" aria-labelledby="faq-q-3" aria-hidden="true">
           <p>Igen.</p>
           <p>A főbb eseményeket több kamerával rögzítem, így a legfontosabb pillanatok több szemszögből is megmaradnak.</p>
           <p>Ez különösen fontos a szertartás, a fogadalmak, a bevonulás, a gyűrűhúzás, a beszédek és az első tánc esetében.</p>
@@ -593,8 +593,8 @@
       </article>
 
       <article class="faq-item">
-        <h3>Mit tartalmaz a hosszabb esküvői film?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">Mit tartalmaz a hosszabb esküvői film?</button></h3>
+        <div class="faq-answer" id="faq-a-4" role="region" aria-labelledby="faq-q-4" aria-hidden="true">
           <p>A hosszabb filmben a nap legfontosabb eseményei teljesebb formában is helyet kapnak.</p>
           <p>Ilyen például a szertartás, a fogadalmak, a beszédek, a nyitótánc és más kiemelt pillanatok.</p>
           <p>A cél, hogy ne csak egy rövid, hangulatfilmes összefoglalót kapjatok, hanem a nap valódi története is megmaradjon.</p>
@@ -602,16 +602,16 @@
       </article>
 
       <article class="faq-item">
-        <h3>Van drónfelvétel?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">Van drónfelvétel?</button></h3>
+        <div class="faq-answer" id="faq-a-5" role="region" aria-labelledby="faq-q-5" aria-hidden="true">
           <p>Igen.</p>
           <p>A drónfelvétel a Teljes és Prémium csomag része, amennyiben az időjárás, a helyszín és az aktuális szabályozás ezt lehetővé teszi.</p>
         </div>
       </article>
 
       <article class="faq-item">
-        <h3>Mennyire lesz jelen a kamera a nap során?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">Mennyire lesz jelen a kamera a nap során?</button></h3>
+        <div class="faq-answer" id="faq-a-6" role="region" aria-labelledby="faq-q-6" aria-hidden="true">
           <p>A célom, hogy a lehető legtermészetesebben örökítsem meg a napotokat.</p>
           <p>Nem beállított jeleneteket keresek, hanem valódi pillanatokat, őszinte reakciókat és természetes hangulatot.</p>
           <p>Sok pár visszajelzése szerint néhány perc után szinte észre sem vették a kamerát.</p>
@@ -619,24 +619,24 @@
       </article>
 
       <article class="faq-item">
-        <h3>Mikor készül el a film?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">Mikor készül el a film?</button></h3>
+        <div class="faq-answer" id="faq-a-7" role="region" aria-labelledby="faq-q-7" aria-hidden="true">
           <p>Az átadás várható idejét minden esetben előre egyeztetjük.</p>
           <p>A cél nem csupán egy videó elkészítése, hanem egy időtálló esküvői film megalkotása.</p>
         </div>
       </article>
 
       <article class="faq-item">
-        <h3>Vállalsz vidéki esküvőt?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">Vállalsz vidéki esküvőt?</button></h3>
+        <div class="faq-answer" id="faq-a-8" role="region" aria-labelledby="faq-q-8" aria-hidden="true">
           <p>Igen.</p>
           <p>Érdről indulva rendszeresen vállalok esküvőket vidéki helyszíneken is. Távolabbi lokáció esetén egyedi egyeztetés szükséges.</p>
         </div>
       </article>
 
       <article class="faq-item">
-        <h3>Miért érdemes esküvői videót készíttetni?</h3>
-        <div class="faq-answer">
+        <h3><button class="faq-question" type="button" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9">Miért érdemes esküvői videót készíttetni?</button></h3>
+        <div class="faq-answer" id="faq-a-9" role="region" aria-labelledby="faq-q-9" aria-hidden="true">
           <p>Mert vannak pillanatok, amelyeket a fotók önmagukban nem tudnak teljesen visszaadni.</p>
           <p>A hangok, a mozdulatok, a fogadalmak, a nevetések és az apró reakciók együtt adják vissza igazán a nap hangulatát.</p>
           <p>Egy jól elkészített esküvői film nemcsak dokumentál, hanem újra átélhetővé teszi az esküvő napját.</p>
