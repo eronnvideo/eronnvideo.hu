@@ -134,32 +134,6 @@ a {
   margin: 0;
 }
 
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  margin-top: 8px;
-  padding: 0 26px;
-  border: 1px solid rgba(201, 167, 105, 0.42);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: #141519;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-  line-height: 1;
-  text-decoration: none;
-  text-transform: uppercase;
-  box-shadow: 0 12px 28px rgba(18, 19, 22, 0.06);
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-}
-
-.hero-cta:hover {
-  transform: translateY(-2px);
-  border-color: rgba(201, 167, 105, 0.82);
-  box-shadow: 0 18px 36px rgba(18, 19, 22, 0.10);
-}
-
 @media (max-width: 600px) {
   .hero {
     padding: 30px 16px 20px;
@@ -223,6 +197,25 @@ a {
 .nav-link:hover::after {
   width: 100%;
   left: 0;
+}
+
+.nav-link-cta {
+  border: 1px solid rgba(201, 167, 105, 0.35);
+  border-radius: 999px;
+  padding: 7px 16px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(251, 244, 232, 0.92));
+  box-shadow: 0 8px 22px rgba(18, 19, 22, 0.06);
+}
+
+.nav-link-cta:hover {
+  color: #7b6132;
+  border-color: rgba(201, 167, 105, 0.72);
+  box-shadow: 0 12px 28px rgba(201, 167, 105, 0.16);
+}
+
+.nav-link-cta::after {
+  display: none;
 }
 
 @media (max-width: 640px) {
@@ -744,17 +737,61 @@ a {
     grid-template-columns: 1fr;
     gap: 8px;
     padding: 22px 0;
+    text-align: center;
   }
 
   .faq-item h3 {
     font-size: 13px;
     letter-spacing: 0.14em;
+    text-align: center;
   }
 
   .faq-item p {
     font-size: 14px;
     line-height: 1.72;
+    text-align: center;
   }
+}
+
+/* ===== FOOTER ===== */
+.site-footer,
+.site-footer * {
+  box-sizing: border-box;
+  font-family: 'Tenor Sans', serif;
+}
+
+.site-footer {
+  padding: clamp(34px, 5vw, 54px) 16px;
+  background:
+    linear-gradient(180deg, #fbfaf8 0%, #ffffff 100%);
+  border-top: 1px solid rgba(201, 167, 105, 0.22);
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  margin: 0 0 10px;
+  font-size: 15px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: #17181c;
+}
+
+.footer-copy,
+.footer-meta {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #747783;
+}
+
+.footer-meta {
+  margin-top: 4px;
+  color: #8d8375;
 }
 
 /* ===== NAPTAR ===== */
@@ -1318,15 +1355,6 @@ a {
     color: #8b8173;
   }
 
-  .hero-cta {
-    min-height: 40px;
-    margin-top: 4px;
-    padding: 0 20px;
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    background: rgba(255, 255, 255, 0.82);
-  }
-
   .topnav {
     padding: 8px 0;
     background: rgba(255, 255, 255, 0.88);
@@ -1356,6 +1384,13 @@ a {
     color: #2a2b30;
     font-size: 12px;
     line-height: 1;
+  }
+
+  .nav-link-cta {
+    border-color: rgba(201, 167, 105, 0.44);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 239, 219, 0.92));
+    box-shadow: 0 10px 22px rgba(201, 167, 105, 0.16);
   }
 
   .nav-link::after {
@@ -1391,13 +1426,14 @@ a {
 
   .about-card {
     padding: 28px 20px;
-    text-align: left;
+    text-align: center;
   }
 
   .about-text {
     font-size: 14.5px;
     line-height: 1.78;
     color: #383a40;
+    text-align: center;
   }
 
   .about-text p {
@@ -1446,8 +1482,8 @@ a {
   }
 
   .p-head {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 
   .p-title {
@@ -1462,23 +1498,25 @@ a {
 
   .p-list {
     gap: 10px;
+    text-align: center;
   }
 
   .p-list li {
     font-size: 14.5px;
     line-height: 1.5;
     color: #303136;
+    padding-left: 0;
   }
 
   .p-list li::before {
-    top: 0.72em;
-    background: #b0915a;
+    display: none;
   }
 
   .p-fit {
     font-size: 13px;
     line-height: 1.62;
     color: #5f5b52;
+    text-align: center;
   }
 
   .p-price {
@@ -1500,6 +1538,7 @@ a {
     max-width: 340px;
     margin-top: 18px;
     font-size: 11.5px;
+    text-align: center;
   }
 
   .calendar-section,
@@ -1525,6 +1564,7 @@ a {
     margin-bottom: 22px;
     font-size: 13.5px;
     line-height: 1.7;
+    text-align: center;
   }
 
   #wedding-map {
@@ -1535,6 +1575,7 @@ a {
 
   .contact-card {
     padding: 24px 18px;
+    text-align: center;
   }
 
   .contact-form {
@@ -1543,6 +1584,7 @@ a {
 
   .form-field label {
     letter-spacing: 0.14em;
+    text-align: center;
   }
 
   .form-field input,
@@ -1551,6 +1593,7 @@ a {
     padding: 13px 16px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.78);
+    text-align: center;
   }
 
   .form-field textarea {
