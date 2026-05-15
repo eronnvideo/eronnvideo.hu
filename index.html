@@ -577,6 +577,7 @@
       if (typeof L === 'undefined' || typeof isochroneData === 'undefined') return;
       var mapEl = document.getElementById('wedding-map');
       if (!mapEl) return;
+      if (mapEl._leaflet_id) return;
 
       var map = L.map('wedding-map', { scrollWheelZoom: false });
 

@@ -1169,3 +1169,361 @@ a {
     font-size: 12px;
   }
 }
+
+/* ===== MOBILE PREMIUM POLISH ===== */
+@media (max-width: 760px) {
+  :root {
+    --ink: #121316;
+    --muted: #747783;
+    --line: #e9e4dc;
+    --accent: #a9874e;
+    --shadow: 0 14px 34px rgba(18, 19, 22, 0.08);
+  }
+
+  body {
+    background:
+      linear-gradient(180deg, #ffffff 0%, #fbfaf8 34%, #ffffff 100%);
+  }
+
+  .hero {
+    padding: 34px 18px 24px;
+    background:
+      linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%);
+  }
+
+  .hero-inner {
+    gap: 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 11vw, 46px);
+    letter-spacing: clamp(4px, 1.6vw, 8px);
+    line-height: 1.08;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8b8173;
+  }
+
+  .topnav {
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(201, 167, 105, 0.18);
+  }
+
+  .nav-inner {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 0 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 9px 12px;
+    border: 1px solid rgba(201, 167, 105, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.68);
+    color: #2a2b30;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .lux-title {
+    max-width: calc(100vw - 36px);
+    margin: 24px auto 16px;
+    font-size: 14px;
+    letter-spacing: 4px;
+    line-height: 1.45;
+    color: #1f2024;
+  }
+
+  .about-section,
+  .contact-section {
+    padding: 44px 14px;
+    background:
+      radial-gradient(circle at 0 0, rgba(168, 195, 232, 0.22) 0, transparent 48%),
+      radial-gradient(circle at 100% 10%, rgba(236, 211, 168, 0.22) 0, transparent 44%),
+      #fbfaf8;
+  }
+
+  .about-card,
+  .contact-card,
+  .pf-card,
+  .p-card,
+  .review-card {
+    border-color: rgba(210, 199, 184, 0.72);
+    box-shadow: 0 14px 34px rgba(18, 19, 22, 0.08);
+  }
+
+  .about-card {
+    padding: 28px 20px;
+    text-align: left;
+  }
+
+  .about-text {
+    font-size: 14.5px;
+    line-height: 1.78;
+    color: #383a40;
+  }
+
+  .about-text p {
+    margin-bottom: 16px;
+  }
+
+  .pf-section {
+    padding: 42px 14px 50px;
+    background: #ffffff;
+  }
+
+  .pf-grid {
+    gap: 22px;
+  }
+
+  .pf-card {
+    padding: 12px 12px 16px;
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  .pf-video-wrap {
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(201, 167, 105, 0.54), rgba(214, 224, 238, 0.82));
+  }
+
+  .pf-name {
+    margin-top: 13px;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    line-height: 1.45;
+  }
+
+  .pricing-lite {
+    padding: 34px 14px 46px;
+    background: linear-gradient(180deg, #fbfaf8 0%, #f7f4ee 100%);
+  }
+
+  .pricing-grid {
+    gap: 16px;
+  }
+
+  .p-card {
+    padding: 22px 18px 18px;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .p-head {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .p-title {
+    font-size: 22px;
+  }
+
+  .p-badge {
+    padding: 5px 10px;
+    border-color: rgba(201, 167, 105, 0.24);
+    color: #796747;
+  }
+
+  .p-list {
+    gap: 10px;
+  }
+
+  .p-list li {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #303136;
+  }
+
+  .p-list li::before {
+    top: 0.72em;
+    background: #b0915a;
+  }
+
+  .p-price {
+    padding: 14px 15px;
+    border-color: rgba(201, 167, 105, 0.22);
+    background: rgba(255, 255, 255, 0.86);
+  }
+
+  .price-discount {
+    gap: 12px;
+  }
+
+  .price-value-strong {
+    font-size: 17px;
+    color: #141519;
+  }
+
+  .pricing-note {
+    max-width: 340px;
+    margin-top: 18px;
+    font-size: 11.5px;
+  }
+
+  .calendar-section,
+  .coverage-section,
+  .contact-icons-section,
+  .reviews-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .calendar-wrap {
+    padding: 20px 0;
+  }
+
+  .calendar-frame {
+    width: 100%;
+    height: 540px;
+    border-radius: 18px;
+    box-shadow: 0 14px 32px rgba(18, 19, 22, 0.09);
+  }
+
+  .coverage-text {
+    margin-bottom: 22px;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  #wedding-map {
+    height: 380px;
+    border-radius: 18px;
+    border-color: rgba(201, 167, 105, 0.34);
+  }
+
+  .contact-card {
+    padding: 24px 18px;
+  }
+
+  .contact-form {
+    gap: 18px;
+  }
+
+  .form-field label {
+    letter-spacing: 0.14em;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    min-height: 48px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  .form-field textarea {
+    min-height: 140px;
+  }
+
+  .form-submit {
+    width: 100%;
+    min-height: 50px;
+    padding: 15px 20px;
+    letter-spacing: 0.16em;
+    box-shadow: 0 12px 26px rgba(18, 19, 22, 0.14);
+  }
+
+  .contact-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .contact-icon {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .contact-icon-circle {
+    width: 52px;
+    height: 52px;
+    box-shadow: 0 10px 22px rgba(18, 19, 22, 0.12);
+  }
+
+  .contact-icon-circle svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .contact-icon-label {
+    max-width: 100%;
+    font-size: 10px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 8px 0 26px;
+  }
+
+  .review-frame,
+  .review-placeholder {
+    height: 290px;
+  }
+
+  .cookie-banner {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .cookie-banner-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cookie-btn {
+    min-height: 42px;
+    padding: 10px 12px;
+    letter-spacing: 0.06em;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-title {
+    font-size: 30px;
+    letter-spacing: 3.5px;
+  }
+
+  .hero-tagline {
+    letter-spacing: 3px;
+  }
+
+  .contact-icons-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .about-card:hover,
+  .pf-card:hover,
+  .p-card:hover,
+  .review-card:hover,
+  .contact-icon:hover,
+  .nav-link:hover,
+  .form-submit:hover {
+    transform: none;
+  }
+}
